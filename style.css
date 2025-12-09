@@ -1,0 +1,281 @@
+/* --- Portfolio Title Styling (Centered Above Character) --- */
+#portfolio-title {
+    position: absolute;
+    color:#ffd700;
+    font-family: 'Georgia', serif;
+    /* Center point of the screen */
+    top: 50%;
+    left: 50%;
+    
+    /* CRITICAL: Horizontal centering (translateX) and vertical lift (translateY) */
+    /* This centers the element and then shifts it UPWARDS by a fixed amount (e.g., 200px) */
+    /* Adjust the -200px value until it sits exactly where you want it above the image. */
+    transform: translate(-50%, 20px); 
+    
+    z-index: 20; /* Keep it above all scene elements */
+    color: ffd700;
+    text-align: center;
+    pointer-events: none; /* Ignore clicks so user can interact with the scene below */
+}
+
+#portfolio-title h1 {
+    margin: 0;
+    font-size: clamp(24px, 4vw, 48px); /* Responsive font size */
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgb(23, 23, 22), /* Cyan glow */
+                 0 0 10px rgba(18, 17, 17, 0.4); /* Gold accent */
+    font-family: 'Georgia', serif; 
+}
+
+/* Optional subtitle styling */
+#portfolio-title p {
+    margin: 5px 0 0;
+    font-size: clamp(12px, 1.5vw, 18px);
+    opacity: 0.8;
+    color: #ffd700;
+}
+:root {
+    /* Responsive Base Sizes (based on VMIN: guarantees fit on screen) */
+    --base-radius-vmin: 35vmin; /* Increased radius slightly for better use of space */
+    --base-circle-size-vmin: 9vmin; 
+    
+    /* Maximum Fixed Constraints (Stops growth on huge monitors) */
+    --max-orbit-radius: 325px; /* Max orbit radius is half of max container size */
+    --max-circle-dimension: 90px;
+
+    /* Minimum Fixed Constraints (Ensures usability on small phones) */
+    --min-orbit-radius: 125px; 
+    --min-circle-dimension: 50px;
+    --min-char-size: 200px;
+
+    /* Calculated responsive variables using clamp() */
+    --circle-radius: clamp(var(--min-orbit-radius), var(--base-radius-vmin), var(--max-orbit-radius));
+    --container-size: calc(var(--circle-radius) * 2);
+    
+    /* Theme Colors */
+    --dark-bg-color: #0d0d1a;
+    --accent-color: #ffd700;
+}
+
+/* Basic Reset and Scene Setup */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* Overflow hidden is essential for this design */
+    overflow: hidden; 
+    font-family: sans-serif;
+    background-color: var(--dark-bg-color); 
+}
+
+#scene {
+    width: 100%;
+    height: 100%;
+    background-image: url('forestsimple.jpg'); 
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+}
+
+
+/* --- Central Character (Fixed to Absolute Center) --- */
+#character-container {
+    /* Use position: fixed/absolute to anchor it to the center of the viewport */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%; /* Spans full width of the scene */
+    height: 100%; /* Spans full height of the scene */
+    
+    /* CRITICAL: Use Flexbox to center the content horizontally and vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    
+   
+    /* We move the animation to the image itself to keep the container static */
+}
+
+#character-image {
+    /* The image itself is now centered by the container's Flexbox */
+    width: clamp(var(--min-char-size), 40vmin, 350px); 
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 50px rgb(255, 215, 0));
+   
+    /* Apply the floating animation directly to the image */
+    animation: character-float 4s ease-in-out infinite alternate;
+}
+
+@keyframes character-float {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-15px); }
+}
+
+#features-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    /* Uses the constrained size from :root, now based on vmin */
+    width: var(--container-size); 
+    height: var(--container-size);
+    
+    pointer-events: none; 
+    z-index: 5;
+    transform: translate(-50%, -50%); 
+}
+
+.feature-circle {
+    /* Calculate the current circle size using clamp() */
+    --current-circle-size: clamp(var(--min-circle-dimension), var(--base-circle-size-vmin), var(--max-circle-dimension));
+    
+    width: var(--current-circle-size);
+    height: var(--current-circle-size);
+    
+    /* Icon font size is also constrained */
+    font-size: clamp(20px, 3vmin, 32px); 
+
+    /* Styling retained */
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.322); 
+    border: 1px solid rgba(255, 255, 255, 0.512);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    backdrop-filter: blur(5px);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    pointer-events: auto; 
+    z-index: 5;
+
+    /* Center the circle's top-left corner to the 50%/50% anchor point */
+    top: 50%;
+    left: 50%;
+    /* Offset using the calculated current circle size */
+    margin-top: calc( var(--current-circle-size) / -2 );
+    margin-left: calc( var(--current-circle-size) / -2 );
+}
+
+/* --- Circle Label Styling --- */
+.circle-label {
+    position: absolute;
+    bottom: 110%; 
+    white-space: nowrap; 
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--dark-bg-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px; 
+    font-weight: bold;
+    opacity: 0; 
+    pointer-events: none; 
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateY(5px); 
+    z-index: 20; 
+}
+
+/* --- Hover State --- */
+.feature-circle:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+    border: var(--accent-color) 1px solid; 
+    transform: scale(1.1); 
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); 
+}
+
+.feature-circle:hover .circle-label {
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+.feature-circle:hover i {
+    color: var(--accent-color);
+}
+
+
+/* --- Positioning the 7 Circles (Using Constrained Responsive Radius) --- */
+.feature-circle:nth-child(1) { /* About (0 deg) */
+    transform: translate(calc(var(--circle-radius) * 1), calc(var(--circle-radius) * 0));
+}
+.feature-circle:nth-child(2) { /* Github (51.4 deg) */
+    transform: translate(calc(var(--circle-radius) * 0.62), calc(var(--circle-radius) * 0.78));
+}
+.feature-circle:nth-child(3) { /* LinkedIn (102.8 deg) */
+    transform: translate(calc(var(--circle-radius) * -0.22), calc(var(--circle-radius) * 0.97));
+}
+.feature-circle:nth-child(4) { /* Projects (154.2 deg) */
+    transform: translate(calc(var(--circle-radius) * -0.92), calc(var(--circle-radius) * 0.38));
+}
+.feature-circle:nth-child(5) { /* Experience (205.6 deg) */
+    transform: translate(calc(var(--circle-radius) * -0.92), calc(var(--circle-radius) * -0.38));
+}
+.feature-circle:nth-child(6) { /* Resume (257 deg) */
+    transform: translate(calc(var(--circle-radius) * -0.22), calc(var(--circle-radius) * -0.97));
+}
+.feature-circle:nth-child(7) { /* Contact (308.4 deg) */
+    transform: translate(calc(var(--circle-radius) * 0.62), calc(var(--circle-radius) * -0.78));
+}
+
+/* --- Content Display (Responsive and Constrained) --- */
+
+#content-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%); 
+    
+    /* Responsive size for the content box with min/max constraints */
+    width: clamp(350px, 80vw, 650px);
+    height: clamp(300px, 70vh, 500px); 
+    
+    background-color: rgba(0, 0, 0, 0.8); 
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2); 
+    padding: 30px;
+    color: white;
+    overflow-y: auto; 
+    z-index: 8; 
+    
+    pointer-events: none; 
+    opacity: 0;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+#content-display.active-content {
+    opacity: 1;
+    transform: translate(-50%, -50%); 
+    pointer-events: auto;
+}
+
+/* --- Firefly Effect Container --- */
+#firefly-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    pointer-events: none;
+}
+
+.firefly {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: var(--accent-color); 
+    border-radius: 50%;
+    box-shadow: 0 0 10px 5px rgba(255, 215, 0, 0.7);
+    opacity: 0;
+    animation-duration: 10s; 
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}

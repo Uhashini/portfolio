@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uhashini Nithilan - Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<div class="contact-page-content">
+
+    <header class="newspaper-masthead">
+        <div class="masthead-foundation">INQUIRY DESK</div>
+        <h1 class="masthead-title">UHASHINI NITHILAN</h1>
+        <div class="masthead-subtitle-box">
+            <span class="masthead-subtitle">CONTACT</span>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <a href="index.html" class="nav-item">HOME</a>
+        <a href="projects.html" class="nav-item">PROJECTS</a>
+        <a href="experience.html" class="nav-item">EXPERIENCE</a>
+        <a href="contact.html" class="nav-item current-page">CONTACT</a>
+        <a href="https://github.com/Uhashini" class="nav-item" target="_blank" rel="noopener noreferrer">GITHUB</a>
+        <a href="https://www.linkedin.com/in/uhashini-n-3b144a291/" class="nav-item" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+        <a href="[Your-Resume-URL.pdf]" class="nav-item" target="_blank" rel="noopener noreferrer">RESUME</a>
+    </nav>
+
+    <div class="newspaper-body-container">
+
+        <h2 class="page-intro-title">Get In Touch</h2>
+
+        <section class="contact-section">
+            
+            <div class="contact-info-box" data-delay="0.1s">
+                <h3><i class="fas fa-bullhorn"></i> Contact Information</h3>
+                <p>Feel free to reach out directly via email or connect with me on professional platforms.</p>
+                <ul class="contact-details">
+                    <li><i class="fas fa-envelope"></i> Email: <a href="mailto:uhashininithilan@gmail.com">uhashininithilan@gmail.com</a></li>
+                    <li><i class="fab fa-linkedin"></i> LinkedIn: <a href="https://www.linkedin.com/in/uhashini-n-3b144a291/" target="_blank">Uhashini N</a></li>
+                    <li><i class="fas fa-map-marker-alt"></i> Location: Coimbatore, Tamil Nadu, India</li>
+                </ul>
+            </div>
+
+            <hr class="contact-separator">
+
+            <div class="contact-form-wrapper" data-delay="0.3s">
+                <h3><i class="fas fa-file-alt"></i> Send A Message</h3>
+                
+                <form action="#" method="POST" class="contact-form">
+                    
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject (Optional):</label>
+                        <input type="text" id="subject" name="subject" placeholder="Project Inquiry, Internship, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button"><i class="fas fa-paper-plane"></i> Submit Inquiry</button>
+                </form>
+            </div>
+
+        </section>
+
+    </div> 
+</div>
+
+<style>
+    /* -------------------- GENERAL STYLES (Copied from Experience/Common) -------------------- */
+    
+    @keyframes fade-in-up {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* VARIABLES */
+    :root {
+        --about-gold: #b38b00; 
+        --about-cyan: #007777; 
+        --about-text-color: #000000; 
+        --newspaper-line-color: #333333;
+        --page-max-width: 1200px; 
+        --accent-color: #555555; 
+        --form-bg: rgba(255, 255, 255, 0.9);
+        --input-border: #ccc;
+        --button-color: #1a1a1a;
+    }
+
+    body {
+        margin: 0;
+        background-image: url(newspaper.png); 
+        font-family: 'Times New Roman', Times, serif; 
+        line-height: 1.5;
+    }
+    
+    .contact-page-content {
+        background-image: url('newspaper.png'); 
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        max-width: var(--page-max-width);
+        margin: 0 auto;
+        padding: 20px; 
+        color: var(--about-text-color);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+    }
+
+    /* Masthead Styles */
+    .newspaper-masthead {
+        text-align: center;
+        padding-top: 10px;
+        margin-bottom: 20px;
+        border-bottom: 5px double var(--newspaper-line-color);
+    }
+    .masthead-foundation {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 0.9em;
+        color: var(--newspaper-line-color);
+        margin-bottom: 5px;
+    }
+    .masthead-title {
+        font-family: 'Georgia', serif; 
+        font-size: 3.5em; 
+        letter-spacing: 5px;
+        margin: 0 0 10px 0;
+        color: #000;
+        text-transform: uppercase;
+        width: 100%; 
+    }
+    .masthead-subtitle-box {
+        display: inline-block;
+        border: 2px solid var(--newspaper-line-color);
+        padding: 5px 20px;
+        margin-bottom: -1px; 
+    }
+    .masthead-subtitle {
+        font-family: 'Georgia', serif;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #000;
+        text-transform: uppercase;
+    }
+
+    /* Navigation Styles */
+    .main-nav {
+        position: relative; 
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: center;
+        padding: 10px 0;
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--newspaper-line-color);
+        border-top: 1px solid var(--newspaper-line-color);
+    }
+
+    .nav-item {
+        color: var(--newspaper-line-color);
+        text-decoration: none;
+        padding: 5px 10px;
+        margin: 5px; 
+        font-family: Arial, sans-serif;
+        font-size: 0.8em;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+        border: 1px solid transparent;
+        border-radius: 2px;
+    }
+
+    .nav-item:hover, .current-page {
+        color: #000;
+        background-color: rgba(0, 0, 0, 0.05);
+        border-color: #000;
+    }
+
+    /* Outer Content Box */
+    .newspaper-body-container {
+        padding: 20px 30px; 
+        border: 4px solid var(--newspaper-line-color); 
+        column-count: 1; 
+        break-inside: avoid;
+        -webkit-column-break-inside: avoid;
+    }
+    
+    .page-intro-title {
+        font-family: 'Georgia', serif;
+        font-size: 2em;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+        border-bottom: 3px double var(--newspaper-line-color);
+        color: var(--newspaper-line-color);
+    }
+    /* -------------------- END GENERAL STYLES -------------------- */
+
+
+    /* -------------------- CONTACT SPECIFIC STYLES -------------------- */
+    
+    .contact-section {
+        padding: 0 50px; 
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    /* Animation for contact sections */
+    .contact-info-box, .contact-form-wrapper {
+        padding: 20px;
+        background-color: var(--form-bg);
+        border: 1px solid var(--newspaper-line-color);
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fade-in-up 0.6s ease-out forwards;
+        animation-delay: var(--data-delay, 0s); 
+    }
+
+    .contact-info-box h3, .contact-form-wrapper h3 {
+        font-family: 'Georgia', serif;
+        font-size: 1.5em;
+        color: #000;
+        border-bottom: 1px solid var(--newspaper-line-color);
+        padding-bottom: 10px;
+        margin-top: 0;
+    }
+    .contact-info-box h3 i {
+        color: var(--about-cyan);
+        margin-right: 10px;
+    }
+    .contact-form-wrapper h3 i {
+        color: var(--about-gold);
+        margin-right: 10px;
+    }
+
+    /* Contact Details List */
+    .contact-details {
+        list-style: none;
+        padding: 0;
+    }
+    .contact-details li {
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
+    .contact-details li i {
+        margin-right: 10px;
+        color: var(--about-gold);
+    }
+    .contact-details a {
+        color: var(--about-cyan);
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .contact-details a:hover {
+        text-decoration: underline;
+    }
+
+    /* Form Styles */
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        font-size: 0.9em;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: var(--newspaper-line-color);
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        padding: 10px;
+        border: 1px solid var(--input-border);
+        border-radius: 2px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 1em;
+        transition: border-color 0.3s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        border-color: var(--about-cyan);
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 119, 119, 0.3);
+    }
+
+    .submit-button {
+        padding: 12px 20px;
+        background-color: var(--button-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.1em;
+        font-family: Arial, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background-color 0.3s, transform 0.1s;
+    }
+
+    .submit-button:hover {
+        background-color: var(--about-gold);
+        transform: translateY(-2px);
+    }
+
+    .submit-button i {
+        margin-right: 8px;
+    }
+    
+    .contact-separator {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, transparent, var(--newspaper-line-color), transparent);
+        margin: 40px 0;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Responsive adjustment for small screens */
+    @media (max-width: 600px) {
+        .contact-section {
+            padding: 0 10px;
+        }
+    }
+</style>
+
+<script>
+    /**
+     * JavaScript for Scroll Animation (Staggered Fade in)
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+        const infoBox = document.querySelector('.contact-info-box');
+        const formWrapper = document.querySelector('.contact-form-wrapper');
+        
+        // Use the CSS data-delay attribute for staggering
+        infoBox.style.animationDelay = infoBox.getAttribute('data-delay');
+        formWrapper.style.animationDelay = formWrapper.getAttribute('data-delay');
+    });
+</script>
+</body>
+</html>
