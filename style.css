@@ -1,4 +1,11 @@
 /* --- Portfolio Title Styling (Centered Above Character) --- */
+#circle-hint {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
 #portfolio-title {
     position: absolute;
     color:#ffd700;
@@ -33,8 +40,17 @@
     margin: 5px 0 0;
     font-size: clamp(12px, 1.5vw, 18px);
     opacity: 0.8;
-    color: #ffd700;
+    color: #c7f4ee;
 }
+#subtitle-tagline {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #ccc;           /* adjust to match your theme */
+    text-align: center;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
 :root {
     /* Responsive Base Sizes (based on VMIN: guarantees fit on screen) */
     --base-radius-vmin: 35vmin; /* Increased radius slightly for better use of space */
@@ -68,6 +84,36 @@ body, html {
     font-family: sans-serif;
     background-color: var(--dark-bg-color); 
 }
+
+#portfolio-title h1 {
+    font-family: 'Georgia', serif;
+    font-size: 2rem;          /* adjust as you like */
+    color: rgb(255, 215, 0);              /* or your theme color */
+    text-align: center;
+}
+
+/* Typewriter effect */
+.typewriter {
+    display: inline-block;
+    overflow: hidden;               /* hide text until typed */
+    white-space: nowrap;
+    border-right: 0.15em solid rgb(255, 215, 0);/* cursor */
+    animation: typing 2s steps(8, end) forwards,
+               blink-caret 0.75s step-end infinite;
+}
+
+/* Reveal letters left to right */
+@keyframes typing {
+    from { width: 0; }
+    to   { width: 10ch; }            /* 8 characters in "UHASHINI" */
+}
+
+/* Cursor blink */
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50%      { border-color: #fff; }
+}
+
 
 #scene {
     width: 100%;
@@ -249,6 +295,28 @@ body, html {
     opacity: 0;
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
+
+/* Base circle styles assumed as .feature-circle { ... } */
+
+/* Special highlight for About */
+.feature-circle-primary {
+    border: 3px solid #ffd700;          /* gold border */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    transform: scale(1.08);
+    z-index: 2;
+}
+
+/* Optional subtle pulse to draw attention */
+@keyframes primary-pulse {
+    0%   { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+    50%  { box-shadow: 0 0 20px rgba(255, 215, 0, 1); }
+    100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+}
+
+.feature-circle-primary {
+    animation: primary-pulse 2s infinite;
+}
+
 
 #content-display.active-content {
     opacity: 1;
